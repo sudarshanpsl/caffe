@@ -1,9 +1,9 @@
-dist: trusty
+language: cpp
+compiler: gcc
+
 sudo: required
 
 services: docker
-language: cpp
-compiler: gcc
 
 script: bash ./script.sh
 
