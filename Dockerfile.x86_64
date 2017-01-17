@@ -4,4 +4,4 @@ RUN apt-get update && apt-get install build-essential -y  
 COPY . /source 
 WORKDIR /source 
 
-CMD /source/build && cd /source2 && ./build
+CMD sudo /source/build && cd /source2 && ./build
