@@ -1,1 +1,29 @@
-#!/bin/bashNUM_THREADS=4 # Use a build matrix to test many builds in parallel # envvar defaults: #   WITH_CMAKE: false #   WITH_PYTHON3: false #   WITH_IO: true #   WITH_CUDA: false #   WITH_CUDNN: false BUILD_NAME="default-make" BUILD_NAME="python3-make" WITH_PYTHON3=true BUILD_NAME="no-io-make" WITH_IO=false BUILD_NAME="cuda-make" WITH_CUDA=true BUILD_NAME="cudnn-make" WITH_CUDA=true WITH_CUDNN=true BUILD_NAME="default-cmake" WITH_CMAKE=true BUILD_NAME="python3-cmake" WITH_CMAKE=true WITH_PYTHON3=true BUILD_NAME="no-io-cmake" WITH_CMAKE=true WITH_IO=false BUILD_NAME="cuda-cmake" WITH_CMAKE=true WITH_CUDA=true BUILD_NAME="cudnn-cmake" WITH_CMAKE=true WITH_CUDA=true WITH_CUDNN=true ~/protobuf3 source ./scripts/travis/defaults.sh sudo -E ./scripts/travis/install-deps.sh ./scripts/travis/setup-venv.sh ~/venv source ~/venv/bin/activate ./scripts/travis/install-python-deps.sh ./scripts/travis/configure.sh ./scripts/travis/build.sh ./scripts/travis/test.sh if [ "$(./hello)" = "Hello world! - Sud" ]; then echo "successful - Sud"; exit 0; else echo "unsuccessful- Sud"; exit 1; fi
+#!/bin/bash
+NUM_THREADS=4 
+# Use a build matrix to test many builds in parallel 
+# envvar defaults: 
+#   WITH_CMAKE: false 
+#   WITH_PYTHON3: false 
+#   WITH_IO: true 
+#   WITH_CUDA: false 
+#   WITH_CUDNN: false BUILD_NAME="default-make" 
+BUILD_NAME="python3-make" WITH_PYTHON3=true 
+BUILD_NAME="no-io-make" WITH_IO=false 
+BUILD_NAME="cuda-make" WITH_CUDA=true 
+BUILD_NAME="cudnn-make" WITH_CUDA=true WITH_CUDNN=true 
+BUILD_NAME="default-cmake" WITH_CMAKE=true 
+BUILD_NAME="python3-cmake" WITH_CMAKE=true WITH_PYTHON3=true 
+BUILD_NAME="no-io-cmake" WITH_CMAKE=true WITH_IO=false 
+BUILD_NAME="cuda-cmake" WITH_CMAKE=true WITH_CUDA=true 
+BUILD_NAME="cudnn-cmake" WITH_CMAKE=true WITH_CUDA=true 
+WITH_CUDNN=true 
+~/protobuf3 
+source ./scripts/travis/defaults.sh 
+sudo -E ./scripts/travis/install-deps.sh 
+./scripts/travis/setup-venv.sh ~/venv 
+source ~/venv/bin/activate 
+./scripts/travis/install-python-deps.sh 
+./scripts/travis/configure.sh 
+./scripts/travis/build.sh 
+./scripts/travis/test.sh 
+if [ "$(./hello)" = "Hello world! - Sud" ]; then echo "successful - Sud"; exit 0; else echo "unsuccessful- Sud"; exit 1; fi
